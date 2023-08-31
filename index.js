@@ -1,16 +1,35 @@
-alert('voy al supermercado')
+class Super {
+    constructor(nombreDelProducto,precioDelProducto) {
+      this.nombreDelProducto = nombreDelProducto
+      this.precioDelProducto = precioDelProducto
+    }
+  }
+  
 
-const plataQueTengoParaGastar = parseInt(prompt('cuanta plata tengo para gastar?'))
 
-while (isNaN(plataQueTengoParaGastar)) {
-    plataGastada = parseInt(prompt('eso no es un numero, por favor, ingrese numeros'))
-}
+  function procesoDeCompraDelProducto() {
+    const nombreDelProducto = prompt('Ingrese el nombre del producto seleccionado')
+    const precioDelProducto = parseFloat(prompt('Ingrese el precio del producto'))
+    return new Super(nombreDelProducto,precioDelProducto)
+  }
 
-let plataGastada = 0
+  const Productos = []
+     
+  let continuaComprandoProductos = true
+  while (continuaComprandoProductos) {
+    const prod = procesoDeCompraDelProducto()
+  
+    Productos.push(prod)
+  
+    const respuesta = prompt('Quiere comprar algun item mas? si/no')
+    if (respuesta === 'no') {
+        continuaComprandoProductos = false
+    }
+  }
 
-while (plataGastada < plataQueTengoParaGastar) {
-    alert('a gastar')
-    plataGastada = plataGastada + 500
-    alert('ya gaste ' + plataGastada + 'pesos')
-}
-    alert('me quede en 0, tengo que irme')
+
+  let total = 0
+  const precio = Productos.map(p => p.precioDelProducto)
+  precio.forEach(p => { total = total + p })
+  
+  alert('Precio total de su compra' + ' '  +   total)
