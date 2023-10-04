@@ -23,6 +23,8 @@ labelCompra.onsubmit = e => {
   const prod = new Producto({ nombre, precio });
 
   guardarProd(prod);
+
+  alertaGraciasPorComprar();
 }
 
 function guardarProd(prod) {
@@ -40,4 +42,8 @@ function mostrarGraciasPorTuCompra(){
     }
     divListaDeProductos.innerHTML = listaProductoHtml + '</ul>';
   }
+}
+
+function alertaGraciasPorComprar() {
+  Swal.fire('Muchisimas gracias por tu compra. Vuelva prontos!')
 }
